@@ -34,8 +34,14 @@ public class EntradaSaida {
         // Cadastro do aluno feito pela instituição após o login
     }
 
+    public static String entrarAluno (String msg){
+        System.out.println("Informe " + msg + " do aluno: ");
+        return scanner.next();
+        // Login do aluno
+    }
+
     public static int escolherOpcaoAluno() {
-        System.out.println("[1] Cursos \n[2] Materiais \n[3] Ver agendamentos \n[4] Sair da conta");
+        System.out.println("[1] Agendar curso \n[2] Materiais \n[3] Ver cursos \n[4] Sair da conta");
         return scanner.nextInt();
         // Menu do aluno
     }

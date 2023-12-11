@@ -11,8 +11,8 @@ public class Escola {
 
         public void adicionarAluno(Aluno a) {
                 this.listaDeAlunos.add(a);
-        }
-
+            }
+        
         public String listarAlunos() {
                 String alunos = "Os alunos são: \n\n";
                 for (Aluno a : this.listaDeAlunos) {

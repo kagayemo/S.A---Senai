@@ -3,8 +3,11 @@ public class Principal {
         Cadastro c = new Cadastro();
         int opcao = 0;
         int opcaoEscola = 0;
+        int opcaoAluno = 0;
         String loginEscolaCodigo = "";
         String loginEscolaSenha = "";
+        String loginAlunoMatricula = "";
+        String loginAlunoSenha = "";
 
         LimpaConsole.limparTela();
 
@@ -71,14 +74,39 @@ public class Principal {
                             System.out.println("Usuário ou senha incorretos! Tente novamente");
                         }
                     }
-
                     break;
 
                 case 3:
+                    loginAlunoMatricula = EntradaSaida.entrarAluno(" a matrícula ");
+                    loginAlunoSenha = EntradaSaida.entrarAluno(" a senha ");
 
+                    for (Aluno aluno : c.listaDeAlunos) {
+                        if (aluno.matricula.equals(loginAlunoMatricula) && aluno.senha.equals(loginAlunoSenha));
+                        System.out.println("Login realizado com sucesso!");
+
+                        do {
+                            opcaoAluno = EntradaSaida.escolherOpcaoAluno();
+                            switch (opcaoAluno) {
+                                case 1:
+                                System.out.println("oi");
+                                    break;
+
+                                case 2:
+                                    break;
+
+                                case 3:
+                                    break;
+
+                                case 4:
+                                // Sair da conta
+                                    break;
+                            }
+                        } while (opcaoAluno != 4);
+                        System.out.println("Usuário ou senha incorretos! Tente novamente");
+                    }
                     break;
-                case 4:
 
+                case 4:
                     break;
                 case 5:
                     System.exit(0);
