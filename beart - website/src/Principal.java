@@ -1,13 +1,17 @@
 public class Principal {
     public static void main(String[] args) {
-        Cadastro c = new Cadastro();
+        Escola e = new Escola();
+        // Cadastro c = new Cadastro();
+
         int opcao = 0;
         int opcaoEscola = 0;
         int opcaoAluno = 0;
+        int opcaoCurso = 0;
+       
         String loginEscolaCodigo = "";
         String loginEscolaSenha = "";
         String loginAlunoMatricula = "";
-        String loginAlunoSenha = "";
+        String loginAlunoSenha = "";////////
 
         LimpaConsole.limparTela();
 
@@ -15,14 +19,13 @@ public class Principal {
             opcao = EntradaSaida.escolherOpcao();
             switch (opcao) {
                 case 1:
-                    Escola e = new Escola();
                     LimpaConsole.limparTela();
-                    e.nomeInstituicao = EntradaSaida.recebeDado("o nome");
+
+                    e.nomeInstituicao = EntradaSaida.recebeDado("o nome da instituição");
                     e.codigoInstituicao = EntradaSaida.recebeDado("o código: ");
                     e.email = EntradaSaida.recebeDado("o email: ");
                     e.endereco = EntradaSaida.recebeDado("o endereço: ");
                     e.senha = EntradaSaida.recebeDado("a senha: ");
-                    c.adicionarEscola(e);
 
                     LimpaConsole.limparTela();
                     // Cadastro da instituição
@@ -35,44 +38,48 @@ public class Principal {
                     loginEscolaSenha = EntradaSaida.entrarEscola("a senha");
                     // Login da instituição
 
-                    for (Escola escola : c.listaDeEscolas) {
-                        if (escola.codigoInstituicao.equals(loginEscolaCodigo)
-                                && escola.senha.equals(loginEscolaSenha)) {
-                            System.out.println("Login realizado com sucesso!");
+                    if (e.codigoInstituicao.equals(loginEscolaCodigo)
+                            && e.senha.equals(loginEscolaSenha)) {
 
-                            do {
-                                opcaoEscola = EntradaSaida.escolherOpcaoEscola();
-                                switch (opcaoEscola) {
-                                    case 1:
-                                        Aluno a = new Aluno();// < ISSO TÁ CERTO!!!!!!!!!!!!!!!!
+                        LimpaConsole.limparTela();
 
-                                        a.nome = EntradaSaida.cadastrarAluno("o nome");
-                                        a.matricula = EntradaSaida.cadastrarAluno("a matrícula");
-                                        a.senha = EntradaSaida.cadastrarAluno("a senha");
-                                        escola.adicionarAluno(a);
-                                        break;
+                        System.out.println("Login realizado com sucesso!");
 
-                                    case 2:
+                        do {
+                            opcaoEscola = EntradaSaida.escolherOpcaoEscola();
+                            switch (opcaoEscola) {
+                                case 1:
+                                    Aluno a = new Aluno();// < ISSO TÁ CERTO!!!!!!!!!!!!!!!!
 
-                                        // Remover um aluno
-                                        break;
-                                    case 3:
+                                    a.nome = EntradaSaida.cadastrarAluno("o nome");
+                                    a.matricula = EntradaSaida.cadastrarAluno("a matrícula");
+                                    a.senha = EntradaSaida.cadastrarAluno("a senha");
+                                    e.adicionarAluno(a);
+                                    break;
 
-                                        if (!escola.listaDeAlunos.isEmpty()) {
-                                            EntradaSaida.mostrarAlunos(escola.listarAlunos());
-                                            // funciona maisomeno :)
-                                        } else {
+                                case 2:
+                                    
+                                    EntradaSaida.mostrarAlunos(e.listarAlunos());
+                                    int posicaoAluno = EntradaSaida.solicitaPosicao();
+                                    e.removerAluno(posicaoAluno - 1);
 
-                                        }
-                                        break;
-                                    case 4:
-                                        // Sair da conta
-                                        break;
-                                }
-                            } while (opcaoEscola != 4);
-                        } else {
-                            System.out.println("Usuário ou senha incorretos! Tente novamente");
-                        }
+                                    break;
+                                case 3:
+
+                                    if (!e.listaDeAlunos.isEmpty()) {
+                                        EntradaSaida.mostrarAlunos(e.listarAlunos());
+                                        // funciona maisomeno :)
+                                    } else {
+
+                                    }
+                                    break;
+                                case 4:
+                                    // Sair da conta
+                                    break;
+                            }
+                        } while (opcaoEscola != 4);
+                    } else {
+                        System.out.println("Usuário ou senha incorretos! Tente novamente");
                     }
                     break;
 
@@ -80,29 +87,61 @@ public class Principal {
                     loginAlunoMatricula = EntradaSaida.entrarAluno(" a matrícula ");
                     loginAlunoSenha = EntradaSaida.entrarAluno(" a senha ");
 
-                    for (Aluno aluno : c.listaDeAlunos) {
-                        if (aluno.matricula.equals(loginAlunoMatricula) && aluno.senha.equals(loginAlunoSenha));
-                        System.out.println("Login realizado com sucesso!");
+                    // System.out.println(c.listaDeAlunos);
 
-                        do {
-                            opcaoAluno = EntradaSaida.escolherOpcaoAluno();
-                            switch (opcaoAluno) {
-                                case 1:
-                                System.out.println("oi");
-                                    break;
+                    for (Aluno aluno : e.listaDeAlunos) {
+                        if (aluno.matricula.equals(loginAlunoMatricula) && aluno.senha.equals(loginAlunoSenha)) {
 
-                                case 2:
-                                    break;
+                            LimpaConsole.limparTela();
 
-                                case 3:
-                                    break;
+                            System.out.println("Login realizado com sucesso!");
 
-                                case 4:
-                                // Sair da conta
-                                    break;
-                            }
-                        } while (opcaoAluno != 4);
-                        System.out.println("Usuário ou senha incorretos! Tente novamente");
+                            do {
+                                opcaoAluno = EntradaSaida.escolherOpcaoAluno();
+                                switch (opcaoAluno) {
+                                    case 1:
+
+                                        opcaoCurso = EntradaSaida.escolherOpcaoCurso();
+                                        switch (opcaoCurso) {
+                                            case 1:
+                                                // Música
+                                                break;
+                                            case 2:
+                                                // Pintura
+                                                break;
+                                            case 3:
+                                                // Dança
+                                                break;
+                                            case 4:
+                                                // Fotografia
+                                                break;
+                                            case 5:
+                                                // Teatro
+                                                break;
+                                            case 6:
+                                                // Escultura
+                                                break;
+                                            case 7:
+                                                // System.exit(0) sair >:(
+                                                break;
+                                        }
+
+                                        break;
+
+                                    case 2:
+                                        break;
+
+                                    case 3:
+                                        break;
+
+                                    case 4:
+                                        // Sair da conta
+                                        break;
+                                }
+                            } while (opcaoAluno != 4);
+                        } else {
+                            System.out.println("Usuário ou senha incorretos! Tente novamente");
+                        }
                     }
                     break;
 

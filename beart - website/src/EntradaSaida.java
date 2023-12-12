@@ -46,10 +46,21 @@ public class EntradaSaida {
         // Menu do aluno
     }
 
+        public static int escolherOpcaoCurso() {
+        System.out.println("[1] Música \n[2] Pintura \n[3] Dança \n[4] Fotografia \n[5] Teatro \n[6] Escultura \n[7] Sair");
+        return scanner.nextInt();
+        // Menu do aluno
+    }
+
     public static void mostrarAlerta(String string) {
     }
 
     public static void mostrarAlunos(String listarAlunos) {
         System.out.println(listarAlunos);
+    }
+
+    public static int solicitaPosicao() {
+        System.out.println("Informe a posição do aluno a ser removido: ");
+        return scanner.nextInt();
     }
 }
