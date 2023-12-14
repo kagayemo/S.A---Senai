@@ -120,6 +120,7 @@ public class Principal {
                                             switch (opcaoCurso) {
 
                                                 case 1:
+                                                    do {
                                                     opcaoMatricula = EntradaSaida.escolherOpcaoMatricula();
                                                     switch (opcaoMatricula) {
                                                         case 1:
@@ -138,6 +139,7 @@ public class Principal {
                                                         case 2:
                                                             break;
                                                     }
+                                                    } while ()
                                                     break;
 
                                                 case 2:
