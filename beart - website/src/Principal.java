@@ -1,17 +1,20 @@
 public class Principal {
     public static void main(String[] args) {
-        Escola e = new Escola();
-        // Cadastro c = new Cadastro();
+
+        Escola escola = new Escola();
+        Cursos cursos = new Cursos();
+        Cadastro cadastro = new Cadastro();
 
         int opcao = 0;
         int opcaoEscola = 0;
         int opcaoAluno = 0;
         int opcaoCurso = 0;
-       
+        int opcaoMatricula = 0;
+
         String loginEscolaCodigo = "";
         String loginEscolaSenha = "";
         String loginAlunoMatricula = "";
-        String loginAlunoSenha = "";////////
+        String loginAlunoSenha = "";
 
         LimpaConsole.limparTela();
 
@@ -21,11 +24,11 @@ public class Principal {
                 case 1:
                     LimpaConsole.limparTela();
 
-                    e.nomeInstituicao = EntradaSaida.recebeDado("o nome da instituição");
-                    e.codigoInstituicao = EntradaSaida.recebeDado("o código: ");
-                    e.email = EntradaSaida.recebeDado("o email: ");
-                    e.endereco = EntradaSaida.recebeDado("o endereço: ");
-                    e.senha = EntradaSaida.recebeDado("a senha: ");
+                    escola.nomeInstituicao = EntradaSaida.recebeDado("o nome da instituição");
+                    escola.codigoInstituicao = EntradaSaida.recebeDado("o código: ");
+                    escola.email = EntradaSaida.recebeDado("o email: ");
+                    escola.endereco = EntradaSaida.recebeDado("o endereço: ");
+                    escola.senha = EntradaSaida.recebeDado("a senha: ");
 
                     LimpaConsole.limparTela();
                     // Cadastro da instituição
@@ -38,8 +41,8 @@ public class Principal {
                     loginEscolaSenha = EntradaSaida.entrarEscola("a senha");
                     // Login da instituição
 
-                    if (e.codigoInstituicao.equals(loginEscolaCodigo)
-                            && e.senha.equals(loginEscolaSenha)) {
+                    if (escola.codigoInstituicao.equals(loginEscolaCodigo)
+                            && escola.senha.equals(loginEscolaSenha)) {
 
                         LimpaConsole.limparTela();
 
@@ -49,30 +52,40 @@ public class Principal {
                             opcaoEscola = EntradaSaida.escolherOpcaoEscola();
                             switch (opcaoEscola) {
                                 case 1:
-                                    Aluno a = new Aluno();// < ISSO TÁ CERTO!!!!!!!!!!!!!!!!
+                                    Aluno aluno = new Aluno();// < ISSO TÁ CERTO!!!!!!!!!!!!!!!!
 
-                                    a.nome = EntradaSaida.cadastrarAluno("o nome");
-                                    a.matricula = EntradaSaida.cadastrarAluno("a matrícula");
-                                    a.senha = EntradaSaida.cadastrarAluno("a senha");
-                                    e.adicionarAluno(a);
+                                    aluno.nome = EntradaSaida.cadastrarAluno("o nome");
+                                    aluno.matricula = EntradaSaida.cadastrarAluno("a matrícula");
+                                    aluno.senha = EntradaSaida.cadastrarAluno("a senha");
+                                    escola.adicionarAluno(aluno);
                                     break;
 
                                 case 2:
-                                    
-                                    EntradaSaida.mostrarAlunos(e.listarAlunos());
                                     int posicaoAluno = EntradaSaida.solicitaPosicao();
-                                    e.removerAluno(posicaoAluno - 1);
-
-                                    break;
-                                case 3:
-
-                                    if (!e.listaDeAlunos.isEmpty()) {
-                                        EntradaSaida.mostrarAlunos(e.listarAlunos());
-                                        // funciona maisomeno :)
+                                    if (!escola.listaDeAlunos.isEmpty()) {
+                                        EntradaSaida.mostrarAlunos(escola.listarAlunos());
+                                        escola.removerAluno(posicaoAluno - 1);
                                     } else {
-
+                                        System.out.println("Não há alunos cadastrados.");
                                     }
                                     break;
+
+                                case 3:
+
+                                    if (!escola.listaDeAlunos.isEmpty())
+
+                                    {
+                                        EntradaSaida.mostrarAlunos(escola.listarAlunos());
+
+                                    } else
+
+                                    {
+                                        System.out.println("Não há nenhum aluno cadastrado.");
+
+                                    }
+
+                                    break;
+
                                 case 4:
                                     // Sair da conta
                                     break;
@@ -89,7 +102,7 @@ public class Principal {
 
                     // System.out.println(c.listaDeAlunos);
 
-                    for (Aluno aluno : e.listaDeAlunos) {
+                    for (Aluno aluno : escola.listaDeAlunos) {
                         if (aluno.matricula.equals(loginAlunoMatricula) && aluno.senha.equals(loginAlunoSenha)) {
 
                             LimpaConsole.limparTela();
@@ -100,33 +113,130 @@ public class Principal {
                                 opcaoAluno = EntradaSaida.escolherOpcaoAluno();
                                 switch (opcaoAluno) {
                                     case 1:
+                                        do {
+                                            
+                                            EntradaSaida.mostrarCursos(cadastro.listarCursos());
+                                            opcaoCurso = EntradaSaida.escolherOpcaoCurso();
+                                            switch (opcaoCurso) {
 
-                                        opcaoCurso = EntradaSaida.escolherOpcaoCurso();
-                                        switch (opcaoCurso) {
-                                            case 1:
-                                                // Música
-                                                break;
-                                            case 2:
-                                                // Pintura
-                                                break;
-                                            case 3:
-                                                // Dança
-                                                break;
-                                            case 4:
-                                                // Fotografia
-                                                break;
-                                            case 5:
-                                                // Teatro
-                                                break;
-                                            case 6:
-                                                // Escultura
-                                                break;
-                                            case 7:
-                                                // System.exit(0) sair >:(
-                                                break;
-                                        }
+                                                case 1:
+                                                    opcaoMatricula = EntradaSaida.escolherOpcaoMatricula();
+                                                    switch (opcaoMatricula) {
+                                                        case 1:
 
-                                        break;
+                                                            cursos.nomeCurso = "Guitarra\n";
+                                                            cursos.descricao = " Descrição: O aluno aprenderá bases de rock, blues, jazz, entre outros estilos dependendo de sua preferência musical\n";
+                                                            cursos.professor = " Professor: Thomas Baptist Morello\n";
+                                                            cursos.enderecoCurso = "Endereço: R. Dona Francisca, 800 - Saguaçu, Joinville - SC\n";
+                                                            cursos.dataHora = "Data: 20/05/2024 - 14:30pm\n";
+                                                            cadastro.adicionarCurso(cursos);
+                                                            
+                                                            EntradaSaida.mostrarCursos(cadastro.listarCursos());
+
+                                                            break;
+
+                                                        case 2:
+                                                            break;
+                                                    }
+                                                    break;
+
+                                                case 2:
+                                                    opcaoMatricula = EntradaSaida.escolherOpcaoMatricula();
+                                                    
+                                                    switch (opcaoMatricula) {
+                                                        case 1:
+
+                                                            cursos.nomeCurso = "Técnicas de pintura\n";
+                                                            cursos.descricao = "Descrição: O aluno irá aprender desde o básico, como teoria das cores até técnicas de pintura à óleo, acrílica e afins\n";
+                                                            cursos.professor = "Professor: Leonardo da Vinci\n";
+                                                            cursos.enderecoCurso = "Endereço: R. Dona Francisca, 800 - Saguaçu, Joinville - SC, 89221-006\n";
+                                                            cursos.dataHora = "Data: 17/01/2024 - 14:30pm";
+                                                            cadastro.adicionarCurso(cursos);
+
+                                                            break;
+
+                                                        case 2:
+                                                            break;
+                                                    }
+                                                    break;
+
+                                                case 3:
+                                                    opcaoMatricula = EntradaSaida.escolherOpcaoMatricula();
+                                                    switch (opcaoMatricula) {
+
+                                                        case 1:
+                                                            cursos.nomeCurso = "Danças urbanas\n";
+                                                            cursos.descricao = "Descrição: O aluno terá uma introdução em técnicas de dança e poderá explorar diversos aspectos da dança de rua\n";
+                                                            cursos.professor = "Professor: Kwon Soon-young\n";
+                                                            cursos.enderecoCurso = "Endereço: R. Dona Francisca, 800 - Saguaçu, Joinville - SC, 89221-006\n";
+                                                            cursos.dataHora = "Data: 12/06/2024 - 13:30pm";
+                                                            cadastro.adicionarCurso(cursos);
+                                                            break;
+
+                                                        case 2:
+                                                            break;
+                                                    }
+                                                    break;
+
+                                                case 4:
+                                                    opcaoMatricula = EntradaSaida.escolherOpcaoMatricula();
+                                                    switch (opcaoMatricula) {
+                                                        case 1:
+                                                            cursos.nomeCurso = "Fotografia digital\n";
+                                                            cursos.descricao = "Descrição: Os alunos do curso passam por aulas teóricas, de forma prática e criativa para produzir imagens que contem histórias e técnica \n";
+                                                            cursos.professor = "Professor: Araquém Alcântara\n";
+                                                            cursos.enderecoCurso = "Endereço: R. Dona Francisca, 800 - Saguaçu, Joinville - SC, 89221-006\n";
+                                                            cursos.dataHora = "Data: 17/03/2024 - 15:00pm";
+                                                            cadastro.adicionarCurso(cursos);
+                                                            break;
+
+                                                        case 2:
+                                                            break;
+                                                    }
+                                                    break;
+
+                                                case 5:
+                                                    opcaoMatricula = EntradaSaida.escolherOpcaoMatricula();
+                                                    switch (opcaoMatricula) {
+                                                        case 1:
+                                                            cursos.nomeCurso = "Artes cênicas\n";
+                                                            cursos.descricao = "Descrição: O aluno irá aprender desde o básico conceitos de expressões artísticas, oferecendo noções de interpretação e improvisação de forma teórica \n";
+                                                            cursos.professor = "Professores: William Shakespeare e Fernanda Montenegro\n";
+                                                            cursos.enderecoCurso = "Endereço: R. Dona Francisca, 800 - Saguaçu, Joinville - SC, 89221-006\n";
+                                                            cursos.dataHora = "Data: 29/02/2024 - 15:30pm";
+                                                            cadastro.adicionarCurso(cursos);
+                                                            break;
+
+                                                        case 2:
+                                                            break;
+                                                    }
+                                                    break;
+
+                                                case 6:
+                                                    opcaoMatricula = EntradaSaida.escolherOpcaoMatricula();
+                                                    switch (opcaoMatricula) {
+                                                        case 1:
+                                                            cursos.nomeCurso = "Modelagem em clay\n";
+                                                            cursos.descricao = "Descrição: O aluno irá aprender diversas abordagens e tipos diferentes de massas para a criação de escultura, além de oferecer liberdade artística ao estudante \n";
+                                                            cursos.professor = "Professor: Michelangelo di Lodovico Buonarroti Simoni\n";
+                                                            cursos.enderecoCurso = "Endereço: R. Dona Francisca, 800 - Saguaçu, Joinville - SC, 89221-006\n";
+                                                            cursos.dataHora = "Data: 10/06/2024 - 14:30pm";
+                                                            cadastro.adicionarCurso(cursos);
+                                                            break;
+
+                                                        case 2:
+                                                            break;
+                                                    }
+                                                    break;
+
+                                                case 7:
+                                                    // System.exit(0) sair >:(
+                                                    break;
+
+                                            }
+
+                                            break;
+                                        } while (opcaoCurso != 7);
 
                                     case 2:
                                         break;
@@ -134,9 +244,6 @@ public class Principal {
                                     case 3:
                                         break;
 
-                                    case 4:
-                                        // Sair da conta
-                                        break;
                                 }
                             } while (opcaoAluno != 4);
                         } else {

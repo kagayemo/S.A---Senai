@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Escola {
         ArrayList<Aluno> listaDeAlunos = new ArrayList<Aluno>();
+        ArrayList<Cursos> listaDeCursos = new ArrayList<Cursos>();
 
         public String nomeInstituicao;
         public String codigoInstituicao;
@@ -11,9 +12,9 @@ public class Escola {
 
         public String listarAlunos() {
                 String alunos = "Alunos matriculados: \n\n";
-                for (Aluno a : this.listaDeAlunos) {
-                        int posicao = listaDeAlunos.indexOf(a);
-                        alunos += (posicao + 1) + "º Aluno: " + a.nome + "\nMatrícula: " + a.matricula + "\n";
+                for (Aluno aluno : this.listaDeAlunos) {
+                        int posicao = listaDeAlunos.indexOf(aluno);
+                        alunos += (posicao + 1) + "º Aluno: " + aluno.nome + "\nMatrícula: " + aluno.matricula + "\n";
                 }
                 return alunos;
         }

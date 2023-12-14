@@ -41,7 +41,7 @@ public class EntradaSaida {
     }
 
     public static int escolherOpcaoAluno() {
-        System.out.println("[1] Agendar curso \n[2] Materiais \n[3] Ver cursos \n[4] Sair da conta");
+        System.out.println("[1] Agendar curso \n[2] Materiais \n[3] Sair da conta");
         return scanner.nextInt();
         // Menu do aluno
     }
@@ -61,6 +61,15 @@ public class EntradaSaida {
 
     public static int solicitaPosicao() {
         System.out.println("Informe a posição do aluno a ser removido: ");
+        return scanner.nextInt();
+    }
+
+    public static void mostrarCursos(String listarCursos) {
+        System.out.println(listarCursos);
+    }
+
+    public static int escolherOpcaoMatricula(){
+        System.out.println("");
         return scanner.nextInt();
     }
 }
