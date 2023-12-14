@@ -140,6 +140,7 @@ public class Principal {
                                                                 break;
                                                         }
                                                     } while (opcaoMatricula != 2);
+                                                    
                                                     break;
 
                                                 case 2:
