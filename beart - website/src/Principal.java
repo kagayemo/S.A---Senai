@@ -114,37 +114,37 @@ public class Principal {
                                 switch (opcaoAluno) {
                                     case 1:
                                         do {
-                                            
+
                                             EntradaSaida.mostrarCursos(cadastro.listarCursos());
                                             opcaoCurso = EntradaSaida.escolherOpcaoCurso();
                                             switch (opcaoCurso) {
 
                                                 case 1:
                                                     do {
-                                                    opcaoMatricula = EntradaSaida.escolherOpcaoMatricula();
-                                                    switch (opcaoMatricula) {
-                                                        case 1:
+                                                        opcaoMatricula = EntradaSaida.escolherOpcaoMatricula();
+                                                        switch (opcaoMatricula) {
+                                                            case 1:
 
-                                                            cursos.nomeCurso = "Guitarra\n";
-                                                            cursos.descricao = " Descrição: O aluno aprenderá bases de rock, blues, jazz, entre outros estilos dependendo de sua preferência musical\n";
-                                                            cursos.professor = " Professor: Thomas Baptist Morello\n";
-                                                            cursos.enderecoCurso = "Endereço: R. Dona Francisca, 800 - Saguaçu, Joinville - SC\n";
-                                                            cursos.dataHora = "Data: 20/05/2024 - 14:30pm\n";
-                                                            cadastro.adicionarCurso(cursos);
-                                                            
-                                                            EntradaSaida.mostrarCursos(cadastro.listarCursos());
+                                                                cursos.nomeCurso = "Guitarra\n";
+                                                                cursos.descricao = " Descrição: O aluno aprenderá bases de rock, blues, jazz, entre outros estilos dependendo de sua preferência musical\n";
+                                                                cursos.professor = " Professor: Thomas Baptist Morello\n";
+                                                                cursos.enderecoCurso = "Endereço: R. Dona Francisca, 800 - Saguaçu, Joinville - SC\n";
+                                                                cursos.dataHora = "Data: 20/05/2024 - 14:30pm\n";
+                                                                cadastro.adicionarCurso(cursos);
 
-                                                            break;
+                                                                EntradaSaida.mostrarCursos(cadastro.listarCursos());
 
-                                                        case 2:
-                                                            break;
-                                                    }
-                                                    } while ()
+                                                                break;
+
+                                                            case 2:
+                                                                break;
+                                                        }
+                                                    } while (opcaoMatricula != 2);
                                                     break;
 
                                                 case 2:
                                                     opcaoMatricula = EntradaSaida.escolherOpcaoMatricula();
-                                                    
+
                                                     switch (opcaoMatricula) {
                                                         case 1:
 
