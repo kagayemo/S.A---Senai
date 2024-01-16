@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class EntradaSaida {
@@ -55,7 +56,7 @@ public class EntradaSaida {
     }
 
     public static int escolherOpcaoAluno() {
-        System.out.println("[1] Agendar curso \n[2] Materiais \n[3] Sair da conta");
+        System.out.println("[1] Agendar curso \n[2] Cursos agendados \n[3] Sair da conta");
         return scanner.nextInt();
         // Menu do aluno
     }
@@ -78,12 +79,51 @@ public class EntradaSaida {
         return scanner.nextInt();
     }
 
-    public static void mostrarCursos(String listarCursos) {
-        System.out.println(listarCursos);
+    private static void listarCurso(Cursos curso, int posicao) {
+        String exibirCursos = "Cursos disponíveis: \n\n"  +
+                              (posicao) + " - "           +
+                              curso.getNomeCurso() + "\n" +
+                              curso.getDescricao() + "\n" + 
+                              curso.getProfessor() + "\n" + 
+                              curso.getEnderecoCurso() + "\n" + 
+                              curso.getDataHora();
+        System.out.println(exibirCursos);
     }
 
+    
     public static int escolherOpcaoMatricula(){
-        System.out.println("\nDeseja realizar matricula para esse curso? \n[1] Sim \n[2] Não");
+        System.out.println("Deseja realizar matricula para esse curso? \n[1] Sim \n[2] Não");
         return scanner.nextInt();
     }
+
+    // Talvez não devesse estar nessa classe pq tem lógica que não é da "interface"
+    public static void realizaMatricula(List<Cursos> cursos, Aluno aluno) {
+        int opcaoMatricula, opcaoCurso;
+        opcaoCurso = EntradaSaida.escolherOpcaoCurso();
+
+        do {
+            Cursos curso = cursos.get(opcaoCurso - 1);
+            EntradaSaida.listarCurso(curso, opcaoCurso);
+
+            opcaoMatricula = EntradaSaida.escolherOpcaoMatricula();
+            switch (opcaoMatricula){
+                case 1:
+                if (!(aluno.getCadastro().listaDeCursos.contains(curso))) {
+                    // verificação pra ver se tá matriculado
+                    aluno.getCadastro().listaDeCursos.add(curso);
+                    System.out.println("Aluno matriculado com sucesso!\n");
+                    opcaoCurso = EntradaSaida.escolherOpcaoCurso();  
+                } else {
+                    System.out.println("Aluno já está matriculado no curso!\n"); 
+                }
+                break;
+
+                case 2:
+                opcaoCurso = EntradaSaida.escolherOpcaoCurso();   
+                break;     
+            } 
+        } while (opcaoMatricula != 2);
+
+    }
+
 }

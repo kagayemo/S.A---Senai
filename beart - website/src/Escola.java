@@ -15,7 +15,7 @@ public class Escola {
                 String alunos = "Alunos matriculados: \n\n";
                 for (Aluno aluno : this.listaDeAlunos) {
                         int posicao = listaDeAlunos.indexOf(aluno);
-                        alunos += (posicao + 1) + "º Aluno: " + aluno.nome + "\nMatrícula: " + aluno.matricula + "\n";
+                        alunos += (posicao + 1) + "º Aluno: " + aluno.getNome()+ "\nMatrícula: " + aluno.getMatricula() + "\n";
                 }
                 return alunos;
         }

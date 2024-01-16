@@ -5,17 +5,21 @@ public class Cadastro {
     ArrayList<Materiais> listaDeMateriais = new ArrayList<Materiais>();
     ArrayList<Cursos> listaDeCursos = new ArrayList<Cursos>();
 
-    public String listarCursos() {
-
-        String exibirCursos = " ";
-        for (Cursos curso : this.listaDeCursos) {
-            int posicao = listaDeCursos.indexOf(curso);
-            exibirCursos = (posicao + 1) + " "+ curso.nomeCurso + "\n" + curso.descricao + "\n" + curso.professor + "\n" + curso.enderecoCurso + "\n" + curso.dataHora;
-        }
-        return exibirCursos;
-    }
-
     public void adicionarCurso(Cursos c) {
         this.listaDeCursos.add(c);
     }
+
+    public void exibirCursosCadastrados(Aluno aluno){
+        System.out.println("Lista de cursos cadastrados: ");
+        for (Cursos curso : this.listaDeCursos){
+            if ((aluno.getCadastro().listaDeCursos.contains(curso))){
+                String cursosCadastrados = "Nome do curso:" + curso.getNomeCurso() +"\nData:" + curso.getDataHora() + "\nEndereço:" + curso.getEnderecoCurso();
+                System.out.println(cursosCadastrados);
+            }else{
+        System.out.println("Você não fez cadastro em nenhum curso.");
+            }
+    }
 }
+    }
+
+    
