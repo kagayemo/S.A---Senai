@@ -115,9 +115,8 @@ public class Principal {
                                     break;
 
                                     case 2:
-                                        //Cadastro.exibirCursosCadastrados(cursosCadastrados);
+                                        Cadastro.exibirCursosCadastrados();
 
-                                        //CANSEI
                                     break;
                                     case 3:
                                         break;

@@ -78,6 +78,11 @@ public class EntradaSaida {
         System.out.println("Informe a posição do aluno a ser removido: ");
         return scanner.nextInt();
     }
+    
+    public static int escolherOpcaoMatricula(){
+        System.out.println("Deseja realizar matricula para esse curso? \n[1] Sim \n[2] Não");
+        return scanner.nextInt();
+    }
 
     private static void listarCurso(Cursos curso, int posicao) {
         String exibirCursos = "Cursos disponíveis: \n\n"  +
@@ -88,12 +93,6 @@ public class EntradaSaida {
                               curso.getEnderecoCurso() + "\n" + 
                               curso.getDataHora();
         System.out.println(exibirCursos);
-    }
-
-    
-    public static int escolherOpcaoMatricula(){
-        System.out.println("Deseja realizar matricula para esse curso? \n[1] Sim \n[2] Não");
-        return scanner.nextInt();
     }
 
     // Talvez não devesse estar nessa classe pq tem lógica que não é da "interface"
@@ -125,5 +124,5 @@ public class EntradaSaida {
         } while (opcaoMatricula != 2);
 
     }
-
 }
+
