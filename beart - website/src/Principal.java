@@ -3,13 +3,12 @@ import java.util.List;
 public class Principal {
     public static void main(String[] args) {
 
-        List<Cursos> cursos = Cursos.inicializaCursos(); 
+        List<Cursos> cursos = Cursos.inicializaCursos();
         Escola escola = new Escola();
 
         int opcao = 0;
         int opcaoEscola = 0;
         int opcaoAluno = 0;
-        //int opcaoCurso = 0;
 
         String loginEscolaCodigo = "";
         String loginEscolaSenha = "";
@@ -18,28 +17,19 @@ public class Principal {
 
         LimpaConsole.limparTela();
 
+        //Menu principal
         do {
             opcao = EntradaSaida.escolherOpcao();
-            switch (opcao) {
+            switch (opcao){
                 case 1:
                     LimpaConsole.limparTela();
-
-                    escola.nomeInstituicao = EntradaSaida.recebeDado("o nome da instituição");
-                    escola.codigoInstituicao = EntradaSaida.recebeDado("o código: ");
-                    escola.email = EntradaSaida.recebeDado("o email: ");
-                    escola.endereco = EntradaSaida.recebeDado("o endereço: ");
-                    escola.senha = EntradaSaida.recebeDado("a senha: ");
-
+                    Cadastro.cadastroInstituicao(escola);
                     LimpaConsole.limparTela();
-                    // Cadastro da instituição
-                    break;
+                    break;   
                 case 2:
-                    // Criar verificação para código da escola
                     LimpaConsole.limparTela();
-
                     loginEscolaCodigo = EntradaSaida.entrarEscola("o código");
                     loginEscolaSenha = EntradaSaida.entrarEscola("a senha");
-                    // Login da instituição
 
                     if (escola.codigoInstituicao.equals(loginEscolaCodigo)
                             && escola.senha.equals(loginEscolaSenha)) {
@@ -47,47 +37,28 @@ public class Principal {
                         LimpaConsole.limparTela();
 
                         System.out.println("Login realizado com sucesso!");
-
+                        
+                        //Menu da instituição
                         do {
                             opcaoEscola = EntradaSaida.escolherOpcaoEscola();
                             switch (opcaoEscola) {
                                 case 1:
-                                    Aluno aluno = new Aluno();// < ISSO TÁ CERTO!!!!!!!!!!!!!!!!
-                                    aluno.setCadastro(new Cadastro()); // Cadastro passa a fazer parte do aluno
-                                    aluno.setNome(EntradaSaida.cadastrarAluno("o nome"));
-                                    aluno.setSenha(EntradaSaida.cadastrarAluno("a senha"));
-                                    escola.adicionarAluno(aluno);
+                                    Aluno aluno = new Aluno();
+                                    LimpaConsole.limparTela();
+                                    Cadastro.cadastroAluno(aluno, escola);
+                                    LimpaConsole.limparTela();
                                     break;
-
                                 case 2:
-                                    int posicaoAluno = EntradaSaida.solicitaPosicao();
-                                    
-                                    if (!escola.listaDeAlunos.isEmpty()) {
-                                        EntradaSaida.mostrarAlunos(escola.listarAlunos());
-                                        escola.removerAluno(posicaoAluno - 1);
-                                    } else {
-                                        System.out.println("Não há alunos cadastrados.");
-                                    }
+                                    LimpaConsole.limparTela();
+                                    Escola.removerAlunos(escola);
+                                    LimpaConsole.limparTela();
                                     break;
-
                                 case 3:
-
-                                    if (!escola.listaDeAlunos.isEmpty())
-
-                                    {
-                                        EntradaSaida.mostrarAlunos(escola.listarAlunos());
-
-                                    } else
-
-                                    {
-                                        System.out.println("Não há nenhum aluno cadastrado.");
-
-                                    }
-
+                                    LimpaConsole.limparTela();
+                                    Escola.exibirAlunos(escola);
                                     break;
-
                                 case 4:
-                                    // Sair da conta
+                                    LimpaConsole.limparTela();
                                     break;
                             }
                         } while (opcaoEscola != 4);
@@ -99,25 +70,25 @@ public class Principal {
                 case 3:
                     loginAlunoMatricula = EntradaSaida.entrarAluno(" a matrícula ");
                     loginAlunoSenha = EntradaSaida.entrarAluno(" a senha ");
-
                     for (Aluno aluno : escola.listaDeAlunos) {
-                        if (aluno.getMatricula() == Long.parseLong(loginAlunoMatricula) && aluno.getSenha().equals(loginAlunoSenha)) {
+                        if (aluno.getMatricula() == Long.parseLong(loginAlunoMatricula)
+                                && aluno.getSenha().equals(loginAlunoSenha)) {
 
                             LimpaConsole.limparTela();
 
                             System.out.println("Login realizado com sucesso!");
-
+                            
+                            //Menu do aluno
                             do {
                                 opcaoAluno = EntradaSaida.escolherOpcaoAluno();
                                 switch (opcaoAluno) {
                                     case 1:
-                                        EntradaSaida.realizaMatricula(cursos, aluno);                                   
-                                    break;
+                                        EntradaSaida.realizaMatricula(cursos, aluno);
+                                        break;
 
                                     case 2:
-                                        //Cadastro.exibirCursosCadastrados();
-
-                                    break;
+                                        aluno.getCadastro().exibirCursosCadastrados();
+                                        break;
                                     case 3:
                                         break;
                                 }
@@ -127,21 +98,15 @@ public class Principal {
                         }
                     }
                     break;
-
                 case 4:
-
                     break;
+
                 case 5:
                     System.exit(0);
                     break;
 
             }
-
-        } while (opcao != 6);
-
+        } while (opcao != 5);
     }
 }
-
-// everybody gon' respect de shooter, but the one in the front of the gun lives
-// forever.
-// why god why god do i got to suffer
+// everybody gon' respect de shooter, but the one in the front of the gun lives forever.

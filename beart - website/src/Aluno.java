@@ -12,42 +12,43 @@ public class Aluno {
         this.matricula = ++ultimaMatricula;
     }
 
-
+    // Getters e Setters
     public String getNome() {
-        return nome;
+        return this.nome;
     }
-
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-
     public String getSenha() {
-        return senha;
+        return this.senha;
     }
-
 
     public void setSenha(String senha) {
         this.senha = senha;
     }
 
-
     public Cadastro getCadastro() {
-        return cadastro;
+        return this.cadastro;
     }
-
 
     public void setCadastro(Cadastro cadastro) {
         this.cadastro = cadastro;
     }
 
-
     public long getMatricula() {
-        return matricula;
+        return this.matricula;
     }
     
 }
+
+
+
+
+
+
+
 
 
 

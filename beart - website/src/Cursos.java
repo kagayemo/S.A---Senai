@@ -64,6 +64,7 @@ public class Cursos {
         return cursos;
     }
 
+    //Getters e Setters
     public String getNomeCurso() {
         return nomeCurso;
     }
