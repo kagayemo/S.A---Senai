@@ -115,7 +115,7 @@ public class Principal {
                                     break;
 
                                     case 2:
-                                        Cadastro.exibirCursosCadastrados();
+                                        //Cadastro.exibirCursosCadastrados();
 
                                     break;
                                     case 3:
@@ -129,6 +129,7 @@ public class Principal {
                     break;
 
                 case 4:
+
                     break;
                 case 5:
                     System.exit(0);

@@ -6,7 +6,7 @@ public class Aluno {
     
     private long matricula;
     private static long ultimaMatricula = 0;
-    
+
 
     public Aluno() {
         this.matricula = ++ultimaMatricula;

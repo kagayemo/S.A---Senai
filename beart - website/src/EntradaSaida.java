@@ -99,7 +99,7 @@ public class EntradaSaida {
     public static void realizaMatricula(List<Cursos> cursos, Aluno aluno) {
         int opcaoMatricula, opcaoCurso;
         opcaoCurso = EntradaSaida.escolherOpcaoCurso();
-
+        
         do {
             Cursos curso = cursos.get(opcaoCurso - 1);
             EntradaSaida.listarCurso(curso, opcaoCurso);
@@ -123,6 +123,7 @@ public class EntradaSaida {
             } 
         } while (opcaoMatricula != 2);
 
+    }
     }
 }
 
