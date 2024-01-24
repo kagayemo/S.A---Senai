@@ -6,7 +6,7 @@ public class Cadastro {
 
     // Método que recebe o cadastro da instituição 
     public static void cadastroInstituicao(Escola escola) {
-        escola.nomeInstituicao = EntradaSaida.recebeDado("o nome da instituição");
+        escola.nomeInstituicao = EntradaSaida.recebeDado("o nome da instituição: ");
         escola.codigoInstituicao = EntradaSaida.recebeDado("o código: ");
         escola.email = EntradaSaida.recebeDado("o email: ");
         escola.endereco = EntradaSaida.recebeDado("o endereço: ");
@@ -35,8 +35,7 @@ public class Cadastro {
 
         } else {
             for (Cursos curso : this.listaDeCursos) {
-                String cursosCadastrados = "Nome do curso:" + curso.getNomeCurso() + "\nData:" + curso.getDataHora()
-                        + "\nEndereço:" + curso.getEnderecoCurso();
+                String cursosCadastrados = curso.getNomeCurso() + curso.getDataHora() + curso.getEnderecoCurso();
                 System.out.println(cursosCadastrados);
             }
         }

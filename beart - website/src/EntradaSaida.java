@@ -4,10 +4,10 @@ import java.util.Scanner;
 public class EntradaSaida {
     public static Scanner scanner = new Scanner(System.in);
 
+
     // Opção inicial para o usuário, sendo instituição ou aluno
     public static int escolherOpcao() {
-        System.out.println(
-                "[1] Cadastro Instituição \n[2] Log-in Instituição \n[3] Log-in Aluno \n[4] Contatos \n[5] Sair");
+        System.out.println("[1] Cadastro Instituição \n[2] Log-in Instituição \n[3] Log-in Aluno \n[4] Contato \n[5] Sair\n");
         return scanner.nextInt();
     }
 
@@ -20,19 +20,18 @@ public class EntradaSaida {
 
     // Recebe os dados do cadastro da instituição
     public static String recebeDado(String msg) {
-        System.out.println("\n Digite " + msg);
+        System.out.println("Digite " + msg);
         return EntradaSaida.recebeString();
     }
-
     // Recebe os dados para o login da instituição
     public static String entrarEscola(String msg) {
-        System.out.print("Informe " + msg + " da escola:");
+        System.out.print("Informe " + msg + " da escola: ");
         return EntradaSaida.recebeString();
     }
 
     // Menu da instituição
     public static int escolherOpcaoEscola() {
-        System.out.println("[1] Cadastrar aluno \n[2] Remover alunos \n[3] Visualizar alunos \n[4] Sair da conta");
+        System.out.println("[1] Cadastrar aluno \n[2] Remover alunos \n[3] Visualizar alunos \n[4] Sair da conta\n");
         return scanner.nextInt();
     }
 
@@ -96,9 +95,11 @@ public class EntradaSaida {
         opcaoCurso = EntradaSaida.escolherOpcaoCurso();
 
         if (opcaoCurso == 7) {
+            LimpaConsole.limparTela();
             return 1;
         }
         do {
+            LimpaConsole.limparTela();
             Cursos curso = cursos.get(opcaoCurso - 1);
             EntradaSaida.listarCurso(curso, opcaoCurso);
 
@@ -106,12 +107,14 @@ public class EntradaSaida {
             switch (opcaoMatricula) {
 
                 case 1:
+                LimpaConsole.limparTela();
                     if (!(aluno.getCadastro().listaDeCursos.contains(curso))) {
                         aluno.getCadastro().listaDeCursos.add(curso);
                         System.out.println("Aluno matriculado com sucesso!\n");
                         opcaoCurso = EntradaSaida.escolherOpcaoCurso();
 
                         if (opcaoCurso == 7) {
+                            LimpaConsole.limparTela();
                             return 1;
                         }
                     } else {
@@ -120,11 +123,13 @@ public class EntradaSaida {
                     break;
 
                 case 2:
+                    LimpaConsole.limparTela();
                     opcaoCurso = EntradaSaida.escolherOpcaoCurso();
                     break;
             }
 
         } while (opcaoMatricula != 2);
         return 1;
-    }
+
+}
 }

@@ -1,8 +1,9 @@
 import java.util.List;
 
 public class Principal {
+    public static final String BLUE_BRIGHT = "\033[0;94m";
     public static void main(String[] args) {
-
+        
         List<Cursos> cursos = Cursos.inicializaCursos();
         Escola escola = new Escola();
 
@@ -13,12 +14,15 @@ public class Principal {
         String loginEscolaCodigo = "";
         String loginEscolaSenha = "";
         String loginAlunoMatricula = "";
-        String loginAlunoSenha = "";
-
-        LimpaConsole.limparTela();
-
+        String loginAlunoSenha = "";  
+        
         //Menu principal
-        do {
+        do { 
+
+            System.out.println(BLUE_BRIGHT + "░█▀▄░█▀▀░█▀█░█▀▄░▀█▀");
+            System.out.println("░█▀▄░█▀▀░█▀█░█▀▄░░█░");
+            System.out.println("░▀▀░░▀▀▀░▀░▀░▀░▀░░▀░\n");
+            
             opcao = EntradaSaida.escolherOpcao();
             switch (opcao){
                 case 1:
@@ -63,11 +67,13 @@ public class Principal {
                             }
                         } while (opcaoEscola != 4);
                     } else {
-                        System.out.println("Usuário ou senha incorretos! Tente novamente");
+                        LimpaConsole.limparTela();
+                        System.out.println("Usuário ou senha incorretos! Voltando ao menu... \n");
                     }
                     break;
 
                 case 3:
+                    LimpaConsole.limparTela();
                     loginAlunoMatricula = EntradaSaida.entrarAluno(" a matrícula ");
                     loginAlunoSenha = EntradaSaida.entrarAluno(" a senha ");
                     for (Aluno aluno : escola.listaDeAlunos) {
@@ -83,13 +89,16 @@ public class Principal {
                                 opcaoAluno = EntradaSaida.escolherOpcaoAluno();
                                 switch (opcaoAluno) {
                                     case 1:
+                                        LimpaConsole.limparTela();
                                         EntradaSaida.realizaMatricula(cursos, aluno);
                                         break;
 
                                     case 2:
+                                        LimpaConsole.limparTela();
                                         aluno.getCadastro().exibirCursosCadastrados();
                                         break;
                                     case 3:
+                                    LimpaConsole.limparTela();
                                         break;
                                 }
                             } while (opcaoAluno != 3);
