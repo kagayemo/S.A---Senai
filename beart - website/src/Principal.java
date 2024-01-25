@@ -4,6 +4,7 @@ public class Principal {
     public static void main(String[] args) throws InterruptedException {
         List<Cursos> cursos = Cursos.inicializaCursos();
         Escola escola = new Escola();
+        
 
         int opcao = 0;
         int opcaoEscola = 0;
@@ -63,10 +64,13 @@ public class Principal {
                                     Escola.exibirAlunos(escola);
                                     break;
                                 case 4:
+                                    Escola.editarAlunos(escola);
+                                break;
+                                case 5:
                                     LimpaConsole.limparTela();
                                     break;
                             }
-                        } while (opcaoEscola != 4);
+                        } while (opcaoEscola != 5);
                     } else {
                         LimpaConsole.limparTela();
                         System.out.println("Usuário ou senha incorretos! Voltando ao menu... \n");

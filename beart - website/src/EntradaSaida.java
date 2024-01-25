@@ -23,6 +23,11 @@ public class EntradaSaida {
         return scanner.nextInt();
     }
 
+    public static int escolherOpcaoEdit() {
+        System.out.println("[1] Nome \n[2] Senha");
+        return scanner.nextInt();
+    }
+
     // Valida o espaço na string
     private static String recebeString() {
         String nome = entrada.nextLine();
@@ -42,7 +47,7 @@ public class EntradaSaida {
 
     // Menu da instituição
     public static int escolherOpcaoEscola() {
-        System.out.println("[1] Cadastrar aluno \n[2] Remover alunos \n[3] Visualizar alunos \n[4] Sair da conta\n");
+        System.out.println("[1] Cadastrar aluno \n[2] Remover alunos \n[3] Visualizar alunos \n[4] Editar aluno \n[5] Sair da conta");
         return scanner.nextInt();
     }
 
@@ -86,6 +91,11 @@ public class EntradaSaida {
     // Solicita índice do aluno a ser removido
     public static int solicitaPosicao() {
         System.out.println("Informe a posição do aluno a ser removido: ");
+        return scanner.nextInt();
+    }
+
+    public static int solicitaPosicaoEdit() {
+        System.out.println("Informe a posição do aluno a ser editado: ");
         return scanner.nextInt();
     }
 
