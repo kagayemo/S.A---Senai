@@ -5,6 +5,18 @@ public class EntradaSaida {
     public static Scanner scanner = new Scanner(System.in);
     public static Scanner entrada = new Scanner(System.in);
 
+    public static void pressEnterToContinue()
+    { 
+           System.out.println("Pressione enter para voltar");
+           try
+           {
+               System.in.read();
+               scanner.nextLine();
+           }  
+           catch(Exception e)
+           {}  
+    }
+
     // Opção inicial para o usuário, sendo instituição ou aluno
     public static int escolherOpcao() {
         System.out.println("[1] Cadastro Instituição \n[2] Log-in Instituição \n[3] Log-in Aluno \n[4] Contato \n[5] Sair\n");
@@ -85,6 +97,7 @@ public class EntradaSaida {
 
     // Lista os cursos
     private static void listarCurso(Cursos curso, int posicao) {
+        EntradaSaida.logoMenu();
         String exibirCursos = "Cursos disponíveis: \n\n" +
                 (posicao) + " - " +
                 curso.getNomeCurso() + "\n" +

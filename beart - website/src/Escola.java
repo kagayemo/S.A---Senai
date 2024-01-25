@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Escola {
         ArrayList<Aluno> listaDeAlunos = new ArrayList<Aluno>();
         ArrayList<Cursos> listaDeCursos = new ArrayList<Cursos>();
+        
 
         public String nomeInstituicao;
         public String codigoInstituicao;
@@ -19,8 +20,10 @@ public class Escola {
         public static void exibirAlunos(Escola escola){
                 if (!escola.listaDeAlunos.isEmpty()) {
                         EntradaSaida.mostrarAlunos(escola.listarAlunos());
+                        EntradaSaida.pressEnterToContinue();
                     } else {
                         System.out.println("Não há nenhum aluno cadastrado.");
+                        EntradaSaida.pressEnterToContinue();
                     }
         }
 
@@ -38,13 +41,16 @@ public class Escola {
 
         //Método que remove os alunos da lista
         public static void removerAlunos(Escola escola){
-                int posicaoAluno = EntradaSaida.solicitaPosicao();
-
                 if (!escola.listaDeAlunos.isEmpty()) {
                     EntradaSaida.mostrarAlunos(escola.listarAlunos());
+                    int posicaoAluno = EntradaSaida.solicitaPosicao();
                     escola.removerAluno(posicaoAluno - 1);
+                    LimpaConsole.limparTela();
+                    System.out.println("O aluno foi removido com sucesso!");
+                    EntradaSaida.pressEnterToContinue();
                 } else {
-                    System.out.println("Não há alunos cadastrados.");
+                    System.out.println("Não há nenhum aluno cadastrado.");
+                    EntradaSaida.pressEnterToContinue();
                 }
         }
 

@@ -16,18 +16,17 @@ public class Principal {
 
         //Menu principal
         do { 
+            LimpaConsole.limparTela();
             EntradaSaida.logoMenu();
             opcao = EntradaSaida.escolherOpcao();
             switch (opcao){
                 case 1:
                     LimpaConsole.limparTela();
-                    EntradaSaida.logoMenu();
                     Cadastro.cadastroInstituicao(escola);
                     LimpaConsole.limparTela();
                     break;   
                 case 2:
                     LimpaConsole.limparTela();
-                    EntradaSaida.logoMenu();
                     loginEscolaCodigo = EntradaSaida.entrarEscola("o código");
                     loginEscolaSenha = EntradaSaida.entrarEscola("a senha");
 
@@ -41,9 +40,11 @@ public class Principal {
                         
                         //Menu da instituição
                         do {
+                            LimpaConsole.limparTela();
                             EntradaSaida.logoMenu();
                             opcaoEscola = EntradaSaida.escolherOpcaoEscola();
                             switch (opcaoEscola) {
+                                
                                 case 1:
                                     Aluno aluno = new Aluno();
                                     LimpaConsole.limparTela();
@@ -55,9 +56,7 @@ public class Principal {
                                     LimpaConsole.limparTela();
                                     EntradaSaida.logoMenu();
                                     Escola.removerAlunos(escola);
-                                    LimpaConsole.limparTela();
-                                    break;
-                                    
+                                    break;    
                                 case 3:
                                     LimpaConsole.limparTela();
                                     EntradaSaida.logoMenu();
@@ -85,11 +84,13 @@ public class Principal {
                                 && aluno.getSenha().equals(loginAlunoSenha)) {
 
                             LimpaConsole.limparTela();
+                            System.out.println("Login realizado com sucesso! Aguarde...");
+                            Thread.sleep(2000);
+                            LimpaConsole.limparTela();
 
-                            System.out.println("Login realizado com sucesso!");
-                            
                             //Menu do aluno
                             do {
+                                EntradaSaida.logoMenu();
                                 opcaoAluno = EntradaSaida.escolherOpcaoAluno();
                                 switch (opcaoAluno) {
                                     case 1:
