@@ -1,9 +1,9 @@
 import java.util.List;
 import java.util.Scanner;
-
 public class EntradaSaida {
-    public static Scanner scanner = new Scanner(System.in);
 
+    public static Scanner scanner = new Scanner(System.in);
+    public static Scanner entrada = new Scanner(System.in);
 
     // Opção inicial para o usuário, sendo instituição ou aluno
     public static int escolherOpcao() {
@@ -13,10 +13,9 @@ public class EntradaSaida {
 
     // Valida o espaço na string
     private static String recebeString() {
-        Scanner entrada = new Scanner(System.in);
         String nome = entrada.nextLine();
         return nome;
-    }
+        }
 
     // Recebe os dados do cadastro da instituição
     public static String recebeDado(String msg) {
@@ -65,6 +64,13 @@ public class EntradaSaida {
         System.out.println(listarAlunos);
     }
 
+    public static final String BLUE_BRIGHT = "\033[0;94m";
+    public static void logoMenu (){
+        System.out.println(BLUE_BRIGHT + "\n░█▀▄░█▀▀░█▀█░█▀▄░▀█▀");
+        System.out.println("░█▀▄░█▀▀░█▀█░█▀▄░░█░");
+        System.out.println("░▀▀░░▀▀▀░▀░▀░▀░▀░░▀░\n");
+    }
+
     // Solicita índice do aluno a ser removido
     public static int solicitaPosicao() {
         System.out.println("Informe a posição do aluno a ser removido: ");
@@ -97,12 +103,12 @@ public class EntradaSaida {
         if (opcaoCurso == 7) {
             LimpaConsole.limparTela();
             return 1;
-        }
+        } else{
         do {
             LimpaConsole.limparTela();
             Cursos curso = cursos.get(opcaoCurso - 1);
             EntradaSaida.listarCurso(curso, opcaoCurso);
-
+    
             opcaoMatricula = EntradaSaida.escolherOpcaoMatricula();
             switch (opcaoMatricula) {
 
@@ -124,12 +130,13 @@ public class EntradaSaida {
 
                 case 2:
                     LimpaConsole.limparTela();
-                    opcaoCurso = EntradaSaida.escolherOpcaoCurso();
+                    realizaMatricula(cursos, aluno);
                     break;
             }
 
-        } while (opcaoMatricula != 2);
-        return 1;
+            } while (opcaoMatricula != 2);
+            return 1;
 
 }
+    }
 }

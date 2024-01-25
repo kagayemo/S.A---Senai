@@ -1,9 +1,7 @@
 import java.util.List;
 
 public class Principal {
-    public static final String BLUE_BRIGHT = "\033[0;94m";
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) throws InterruptedException {
         List<Cursos> cursos = Cursos.inicializaCursos();
         Escola escola = new Escola();
 
@@ -14,24 +12,22 @@ public class Principal {
         String loginEscolaCodigo = "";
         String loginEscolaSenha = "";
         String loginAlunoMatricula = "";
-        String loginAlunoSenha = "";  
-        
+        String loginAlunoSenha = ""; 
+
         //Menu principal
         do { 
-
-            System.out.println(BLUE_BRIGHT + "░█▀▄░█▀▀░█▀█░█▀▄░▀█▀");
-            System.out.println("░█▀▄░█▀▀░█▀█░█▀▄░░█░");
-            System.out.println("░▀▀░░▀▀▀░▀░▀░▀░▀░░▀░\n");
-            
+            EntradaSaida.logoMenu();
             opcao = EntradaSaida.escolherOpcao();
             switch (opcao){
                 case 1:
                     LimpaConsole.limparTela();
+                    EntradaSaida.logoMenu();
                     Cadastro.cadastroInstituicao(escola);
                     LimpaConsole.limparTela();
                     break;   
                 case 2:
                     LimpaConsole.limparTela();
+                    EntradaSaida.logoMenu();
                     loginEscolaCodigo = EntradaSaida.entrarEscola("o código");
                     loginEscolaSenha = EntradaSaida.entrarEscola("a senha");
 
@@ -39,26 +35,32 @@ public class Principal {
                             && escola.senha.equals(loginEscolaSenha)) {
 
                         LimpaConsole.limparTela();
-
-                        System.out.println("Login realizado com sucesso!");
+                        System.out.println("Login realizado com sucesso! Aguarde...");
+                        Thread.sleep(2000);
+                        LimpaConsole.limparTela();
                         
                         //Menu da instituição
                         do {
+                            EntradaSaida.logoMenu();
                             opcaoEscola = EntradaSaida.escolherOpcaoEscola();
                             switch (opcaoEscola) {
                                 case 1:
                                     Aluno aluno = new Aluno();
                                     LimpaConsole.limparTela();
+                                    EntradaSaida.logoMenu();
                                     Cadastro.cadastroAluno(aluno, escola);
                                     LimpaConsole.limparTela();
                                     break;
                                 case 2:
                                     LimpaConsole.limparTela();
+                                    EntradaSaida.logoMenu();
                                     Escola.removerAlunos(escola);
                                     LimpaConsole.limparTela();
                                     break;
+                                    
                                 case 3:
                                     LimpaConsole.limparTela();
+                                    EntradaSaida.logoMenu();
                                     Escola.exibirAlunos(escola);
                                     break;
                                 case 4:
@@ -69,6 +71,8 @@ public class Principal {
                     } else {
                         LimpaConsole.limparTela();
                         System.out.println("Usuário ou senha incorretos! Voltando ao menu... \n");
+                        Thread.sleep(2000);
+                        LimpaConsole.limparTela();
                     }
                     break;
 
@@ -103,7 +107,10 @@ public class Principal {
                                 }
                             } while (opcaoAluno != 3);
                         } else {
-                            System.out.println("Usuário ou senha incorretos! Tente novamente");
+                            LimpaConsole.limparTela();
+                            System.out.println("Usuário ou senha incorretos! Voltando ao menu... \n");
+                            Thread.sleep(2000);
+                            LimpaConsole.limparTela();
                         }
                     }
                     break;
