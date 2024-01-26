@@ -28,17 +28,18 @@ public class Cadastro {
 
     // Método que exibe os cursos em que o aluno está cadastrado
     public void exibirCursosCadastrados() {
-        System.out.println("Lista de cursos cadastrados: ");
-
         if (this.listaDeCursos.isEmpty()) {
             System.out.println("Você não fez cadastro em nenhum curso.");
+            EntradaSaida.pressEnterToContinue();
 
         } else {
             for (Cursos curso : this.listaDeCursos) {
                 String cursosCadastrados = curso.getNomeCurso() + curso.getDataHora() + curso.getEnderecoCurso();
                 System.out.println(cursosCadastrados);
             }
+            EntradaSaida.pressEnterToContinue();
         }
+        
     }
 }
 

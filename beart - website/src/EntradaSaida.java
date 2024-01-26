@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Scanner;
-public class EntradaSaida {
 
+public class EntradaSaida {
     public static Scanner scanner = new Scanner(System.in);
     public static Scanner entrada = new Scanner(System.in);
 
@@ -39,6 +39,7 @@ public class EntradaSaida {
         System.out.println("Digite " + msg);
         return EntradaSaida.recebeString();
     }
+
     // Recebe os dados para o login da instituição
     public static String entrarEscola(String msg) {
         System.out.print("Informe " + msg + " da escola: ");
@@ -82,11 +83,18 @@ public class EntradaSaida {
     }
 
     public static final String BLUE_BRIGHT = "\033[0;94m";
+
     public static void logoMenu (){
         System.out.println(BLUE_BRIGHT + "\n░█▀▄░█▀▀░█▀█░█▀▄░▀█▀");
         System.out.println("░█▀▄░█▀▀░█▀█░█▀▄░░█░");
         System.out.println("░▀▀░░▀▀▀░▀░▀░▀░▀░░▀░\n");
     }
+
+    public static void creditos (){
+        System.out.println("Eliel Schuberto\nLevi Pinott\n");
+        System.out.println("BeArt - Todos os direitos reservados ©\n");
+    }
+
 
     // Solicita índice do aluno a ser removido
     public static int solicitaPosicao() {
@@ -99,7 +107,7 @@ public class EntradaSaida {
         return scanner.nextInt();
     }
 
-    // Pergunta ao aluno se ele deseja realizar matrícula no curso informado
+    // Pergunta ao aluno se ele deseja realizar posição no curso informado
     public static int escolherOpcaoMatricula() {
         System.out.println("Deseja realizar matricula para esse curso? \n[1] Sim \n[2] Não");
         return scanner.nextInt();
@@ -140,6 +148,9 @@ public class EntradaSaida {
                     if (!(aluno.getCadastro().listaDeCursos.contains(curso))) {
                         aluno.getCadastro().listaDeCursos.add(curso);
                         System.out.println("Aluno matriculado com sucesso!\n");
+                        EntradaSaida.pressEnterToContinue();
+                        LimpaConsole.limparTela();
+                        EntradaSaida.logoMenu();
                         opcaoCurso = EntradaSaida.escolherOpcaoCurso();
 
                         if (opcaoCurso == 7) {
@@ -148,6 +159,10 @@ public class EntradaSaida {
                         }
                     } else {
                         System.out.println("Aluno já está matriculado no curso!\n");
+                        EntradaSaida.pressEnterToContinue();
+                        LimpaConsole.limparTela();
+                        EntradaSaida.logoMenu();
+                        opcaoCurso = EntradaSaida.escolherOpcaoCurso();
                     }
                     break;
 

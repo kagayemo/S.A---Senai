@@ -72,9 +72,12 @@ public class Escola {
                         int posicaoAluno = EntradaSaida.solicitaPosicaoEdit();
                         Aluno aluno = escola.editarAluno(posicaoAluno - 1);
 
+                        LimpaConsole.limparTela();
+                        System.out.println("Selecione a opção desejada: ");
                         int opcaoEdit = EntradaSaida.escolherOpcaoEdit();
                         switch (opcaoEdit) {
                                 case 1:
+                                        LimpaConsole.limparTela();
                                         System.out.println("Informe o novo nome:");
                                         aluno.setNome(scanner.nextLine());
                                         LimpaConsole.limparTela();
@@ -83,6 +86,7 @@ public class Escola {
                                         break;
 
                                 case 2:
+                                LimpaConsole.limparTela();
                                         System.out.println("Informe a nova senha:");
                                         aluno.setSenha(scanner.nextLine());
                                         LimpaConsole.limparTela();

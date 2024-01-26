@@ -25,6 +25,9 @@ public class Principal {
                     LimpaConsole.limparTela();
                     Cadastro.cadastroInstituicao(escola);
                     LimpaConsole.limparTela();
+                    System.out.println("Cadastro feito com sucesso!");
+                    EntradaSaida.pressEnterToContinue();
+                    LimpaConsole.limparTela();
                     break;   
                 case 2:
                     LimpaConsole.limparTela();
@@ -52,6 +55,9 @@ public class Principal {
                                     EntradaSaida.logoMenu();
                                     Cadastro.cadastroAluno(aluno, escola);
                                     LimpaConsole.limparTela();
+                                    System.out.println("Cadastro feito com sucesso!");
+                                    EntradaSaida.pressEnterToContinue();
+                                    LimpaConsole.limparTela();
                                     break;
                                 case 2:
                                     LimpaConsole.limparTela();
@@ -64,6 +70,8 @@ public class Principal {
                                     Escola.exibirAlunos(escola);
                                     break;
                                 case 4:
+                                    LimpaConsole.limparTela();
+                                    EntradaSaida.logoMenu();
                                     Escola.editarAlunos(escola);
                                 break;
                                 case 5:
@@ -94,16 +102,19 @@ public class Principal {
 
                             //Menu do aluno
                             do {
+                                LimpaConsole.limparTela();
                                 EntradaSaida.logoMenu();
                                 opcaoAluno = EntradaSaida.escolherOpcaoAluno();
                                 switch (opcaoAluno) {
                                     case 1:
                                         LimpaConsole.limparTela();
+                                        EntradaSaida.logoMenu();
                                         EntradaSaida.realizaMatricula(cursos, aluno);
                                         break;
 
                                     case 2:
                                         LimpaConsole.limparTela();
+                                        EntradaSaida.logoMenu();
                                         aluno.getCadastro().exibirCursosCadastrados();
                                         break;
                                     case 3:
@@ -120,6 +131,10 @@ public class Principal {
                     }
                     break;
                 case 4:
+                LimpaConsole.limparTela();
+                EntradaSaida.logoMenu();
+                EntradaSaida.creditos();
+                EntradaSaida.pressEnterToContinue();
                     break;
 
                 case 5:
@@ -130,4 +145,3 @@ public class Principal {
         } while (opcao != 5);
     }
 }
-// everybody gon' respect de shooter, but the one in the front of the gun lives forever.
